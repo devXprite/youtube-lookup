@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Youtube MetaData</title>
+
+    <link rel="stylesheet" href="./src/css/normalize.css">
+    <link rel="stylesheet" href="./src/css/waves.min.css">
+    <link rel="stylesheet" href="./src/css/layout.css">
+</head>
+
+
+<body>
+
+    <header></header>
+
+    <main>
+
+        <section class="home">
+            <h1 class="title">Youtube Metadata</h1>
+            <p class="subtitle">YouTube Metadata normal grabs singular details about a video and its uploader,
+                playlist and its creator, or channel.</p>
+            <input type="url" name="" id="inputUrl" placeholder="https://www.youtube.com/watch?v=xcJtL7QggTI"
+                value="https://www.youtube.com/watch?v=xcJtL7QggTI">
+            <button class="submitBtn" onclick="submitUrl()">Submit</button>
+        </section>
+
+        <section id="response">
+
+            <div class="img wrap">
+                <img id="thumbnail" src="#" alt="" srcset="">
+            </div>
+
+            <div id="snippet" class="section">
+                <h2>Snippet Details :</h2>
+
+                <p>Video Title: <span id="videoTitle">n/a</span></p>
+                <!-- <p>Video Description: <span id="videoDescription">n/a</span></p> -->
+                <p>Video Published At: <span id="videoPublishedAt">n/a</span></p>
+                <p>Channel Name: <span id="channelTitle">n/a</span></p>
+                <!-- <p>Channel Description: <span id="channelDescription">n/a</span></p> -->
+                <p>Channel ID: <span id="channelId">n/a</span></p>
+                <p id="videoTags">Video Tags: </p>
+
+            </div>
+
+            <div id="Statistics" class="section">
+
+                <h2>Statistics Details :</h2>
+
+                <p>Video viewCount: <span id="viewCount">n/a</span></p>
+                <p>Video likeCount: <span id="likeCount">n/a</span></p>
+                <p>Video favoriteCount: <span id="favoriteCount">n/a</span></p>
+                <p>Video commentCount: <span id="commentCount">n/a</span></p>
+
+            </div>
+
+            <div id="status" class="section">
+
+                <h2>Status Details :</h2>
+
+                <p>Video embeddable: <span id="embeddable">n/a</span></p>
+                <p>Video license: <span id="license">n/a</span></p>
+                <p>Video madeForKids: <span id="madeForKids">n/a</span></p>
+                <p>Video privacyStatus: <span id="privacyStatus">n/a</span></p>
+                <p>Video publicStatsViewable: <span id="publicStatsViewable">n/a</span></p>
+                <p>Video uploadStatus: <span id="uploadStatus">n/a</span></p>
+
+            </div>
+
+            <div id="contentDetails" class="section">
+
+                <h2>Content Details :</h2>
+
+                <p>Video caption: <span id="caption">n/a</span></p>
+                <p>Video definition: <span id="definition">n/a</span></p>
+                <p>Video dimension: <span id="dimension">n/a</span></p>
+                <p>Video duration: <span id="duration">n/a</span></p>
+                <p>Video licensedContent: <span id="licensedContent">n/a</span></p>
+                <p>Video projection: <span id="projection">n/a</span></p>
+
+            </div>
+
+            <div id="geolocationDetails" class="section">
+
+                <h2>Geolocation Details :</h2>
+
+                <p>latitude: <span id="latitude">n/a</span></p>
+                <p>longitude: <span id="longitude">n/a</span></p>
+                <p>altitude: <span id="altitude">n/a</span></p>
+                <p>Map Link: <span id="maplink">n/a</span></p>
+
+            </div>
+
+            <div id="topicDetails" class="section">
+                <h2>Topic Details :</h2>
+
+
+            </div>
+        </section>
+
+    </main>
+
+    <script src="./src/javascript/jquery.min.js"></script>
+    <script src="./src/javascript/modernizr.min.js"></script>
+    <script src="./src/javascript/aos.js"></script>
+</body>
+
+</html>
