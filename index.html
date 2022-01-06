@@ -5,13 +5,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <title>Youtube MetaData</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400&display=swap"
+        rel="stylesheet">
+        
     <link rel="stylesheet" href="./src/css/normalize.css">
     <link rel="stylesheet" href="./src/css/aos.css">
     <link rel="stylesheet" href="./src/css/waves.min.css">
+
     <link rel="stylesheet" href="./src/css/layout.css">
+    <link rel="stylesheet" media="screen and (min-width: 600px)" href="./src/css/wide.layout.css">
 </head>
 
 
@@ -22,15 +33,20 @@
     <main>
 
         <section class="home">
+
             <h1 class="title">Youtube Metadata</h1>
             <p class="subtitle">YouTube Metadata normal grabs singular details about a video and its uploader,
                 playlist and its creator, or channel.</p>
-            <input type="url" name="" id="inputUrl" placeholder="https://www.youtube.com/watch?v=xcJtL7QggTI"
-                value="https://www.youtube.com/watch?v=xcJtL7QggTI">
-            <button class="submitBtn" onclick="submitUrl()">Submit</button>
+
+            <form action="" id="form">
+                <input type="url" name="" id="inputUrl" placeholder="https://www.youtube.com/watch?v=xcJtL7QggTI"
+                    value="https://www.youtube.com/watch?v=xcJtL7QggTI">
+                <button type="submit" class="submitBtn" onclick="submitUrl()">Submit</button>
+            </form>
+
         </section>
 
-        <section id="response">
+        <section id="result">
 
             <div class="img wrap">
                 <img id="thumbnail" src="#" alt="" srcset="">

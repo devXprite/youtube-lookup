@@ -1,7 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@400&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@400&display=swap");
 
 * {
   box-sizing: border-box;
@@ -15,7 +13,7 @@ html {
 
 body {
   min-height: 100vh;
-  background: linear-gradient(#000, #222);
+  background: #080808;
   color: #fff;
   font-family: "Poppins", sans-serif;
   background-attachment: fixed;
@@ -78,10 +76,15 @@ p span {
 }
 
 .home .title {
-  font-size: 30px;
+  font-size: 2em;
   font-family: "Comfortaa", cursive;
   text-align: center;
   padding-top: 20vh;
+  font-weight: normal;
+  margin: 0px;
+  background: linear-gradient(114deg, #e633da 35%, #2bfa97 60%, #3acdff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .home #inputUrl {
@@ -126,7 +129,7 @@ p span {
 }
 
 .subtitle {
-  color: #80868b;
+  color: #b3b3b3;
   font-size: 14px;
   font-family: "Exo 2", sans-serif;
   text-align: center;
@@ -162,7 +165,7 @@ p span {
   font-style: normal;
 }
 
-#response {
+#result {
   padding: 5px;
   display: none;
 }
@@ -171,7 +174,7 @@ footer p {
   text-align: center;
 }
 
-footer a{
+footer a {
   color: lime;
   text-decoration: none;
 }
