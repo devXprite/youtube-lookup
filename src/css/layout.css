@@ -20,29 +20,31 @@ body {
 }
 
 .section {
-  background-color: #222;
+  background-color: #151515;
   border-radius: 7px;
-  -webkit-border-radius: 7px;
+  -webkit-border-radius: 0.7em;
   -moz-border-radius: 7px;
   -ms-border-radius: 7px;
   -o-border-radius: 7px;
-  padding: 10px;
+  padding: 1em;
   margin: 18px auto;
-  width: 90%;
+  width: 95%;
   max-width: 1000px;
-  box-shadow: #000 4px 4px 6px;
+  box-shadow: #000 4px 4px 6px, inset #585858 4px 4px 6px;
 }
 
 h2 {
   font-size: 26px;
   font-family: "Comfortaa", cursive;
   font-weight: normal;
+  color: lime;
   margin: 5px 0px 15px 0px;
 }
 
 p {
   margin: 10px 0px;
   font-family: "Exo 2", sans-serif;
+  color: orange;
 }
 
 p span {
@@ -76,10 +78,10 @@ p span {
 }
 
 .home .title {
-  font-size: 2.5em;
+  font-size: 2.2em;
   font-family: "Comfortaa", cursive;
   text-align: center;
-  padding-top: 20vh;
+  padding: 20vh 1vh 1vh;
   font-weight: normal;
   margin: 0px;
   background: linear-gradient(114deg, #e633da 35%, #2bfa97 60%, #3acdff 100%);
@@ -177,4 +179,10 @@ footer p {
 footer a {
   color: lime;
   text-decoration: none;
+}
+
+.not-available{
+  color: orangered;
+  opacity: 0.7;
+  text-decoration: line-through;
 }
