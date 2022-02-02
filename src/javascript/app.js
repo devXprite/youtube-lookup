@@ -80,13 +80,15 @@ function showYoutubeMetaData(data) {
             });
         }
         
-    }
+    } 
 
     if (data.items[0].statistics) {
         $("#viewCount").html(data.items[0].statistics.viewCount);
         $("#likeCount").html(data.items[0].statistics.likeCount);
         $("#favoriteCount").html(data.items[0].statistics.favoriteCount);
         $("#commentCount").html(data.items[0].statistics.commentCount);
+    } else{
+        $("#Statistics").addClass("not-available");
     }
 
     if (data.items[0].status) {
@@ -96,6 +98,8 @@ function showYoutubeMetaData(data) {
         $("#privacyStatus").html(data.items[0].status.privacyStatus);
         $("#publicStatsViewable").html(data.items[0].status.publicStatsViewable);
         $("#uploadStatus").html(data.items[0].status.uploadStatus);
+    } else{
+        $("#status").addClass("not-available");
     }
 
     if (data.items[0].contentDetails) {
@@ -105,12 +109,25 @@ function showYoutubeMetaData(data) {
         $("#duration").html(data.items[0].contentDetails.duration);
         $("#licensedContent").html(data.items[0].contentDetails.licensedContent);
         $("#projection").html(data.items[0].contentDetails.projection);
+    } else{
+        $("#contentDetails").addClass("not-available");
     }
 
     if (data.items[0].recordingDetails.location) {
         $("#altitude").html(data.items[0].recordingDetails.location.altitude);
         $("#latitude").html(data.items[0].recordingDetails.location.latitude);
         $("#longitude").html(data.items[0].recordingDetails.location.longitude);
+    } else{
+        $("#geolocationDetails").addClass("not-available");
+    }
+
+    if (data.items[0].topicDetails.topicCategories.length > 0) {
+        data.items[0].topicDetails.topicCategories.forEach(topic => {
+            
+            $("#topicDetails ul").append(`<li><a href="${topic}">${topic}</a></li>`);            
+        });
+    } else {
+        $("#topicDetails").addClass("not-available");
     }
 }
 

@@ -41,13 +41,22 @@ h2 {
   margin: 5px 0px 15px 0px;
 }
 
-p {
+.section p, .section li {
   margin: 10px 0px;
   font-family: "Exo 2", sans-serif;
   color: orange;
 }
 
-p span {
+.section ul{
+  padding-left: 20px;
+}
+
+.section a{
+  color: #ad55ff;
+  text-decoration: none;
+}
+
+.section p span {
   font-size: 14px;
   display: inline-block;
   color: #ddd;
@@ -156,6 +165,7 @@ p span {
 
 .tags {
   background: blueviolet;
+  color: #eee;
   display: inline-block;
   border-radius: 5px;
   padding: 2px 4px;
@@ -181,8 +191,12 @@ footer a {
   text-decoration: none;
 }
 
-.not-available{
+.not-available h2{
   color: orangered;
   opacity: 0.7;
   text-decoration: line-through;
+}
+
+.not-available p{
+  display: none;
 }
