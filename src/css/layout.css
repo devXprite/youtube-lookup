@@ -164,7 +164,7 @@ h2 {
 }
 
 .tags {
-  background: blueviolet;
+  background-color: blueviolet;
   color: #eee;
   display: inline-block;
   border-radius: 5px;
@@ -175,6 +175,10 @@ h2 {
   -ms-border-radius: 5;
   -o-border-radius: 5;
   font-style: normal;
+}
+
+.tags:hover{
+  background-color: #5c5c5c;
 }
 
 #result {
