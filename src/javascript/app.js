@@ -33,15 +33,28 @@ function getYoutubeMetadata(id, y, z) {
     });
 }
 
+new ClipboardJS('.tags');
+
+navigator.clipboard.readText()
+    .then(text => {
+        console.log(text);
+        if (text.includes("youtu")) {
+            $("#inputUrl").val(text);
+            submitUrl(text);
+        }
+    })
+    .catch(err => {
+        console.error('Failed to read clipboard contents: ', err);
+    });
+
+    
 $("#youtubeForm").submit(function (e) {
     e.preventDefault();
     submitUrl();
 })
 
-new ClipboardJS('.tags');
-
-function submitUrl() {
-    let inputValue = $("#inputUrl").val();
+function submitUrl(data) {
+    let inputValue = data || $("#inputUrl").val();
 
     try {
         let url = new URL(inputValue);
@@ -82,9 +95,9 @@ function showYoutubeMetaData(data) {
                 $("#videoTags").append(`<i class="tags" data-clipboard-text="${tag}" >${tag}</i>`);
             });
 
-            tippy('.tags', {content: "Copied !",animation:"shift-away"});
+            tippy('.tags', { content: "Copied !", animation: "shift-away" });
         }
-        
+
 
     }
 
