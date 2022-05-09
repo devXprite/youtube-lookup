@@ -1,0 +1,50 @@
+{
+  "name": "search-youtube-metadata",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon",
+    "start": "node index.js",
+    "check": "prettier --check .",
+    "format": "prettier --write ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/7ORP3DO/search-youtube-metadata.git"
+  },
+  "keywords": [
+    "youtube"
+  ],
+  "author": "Prateek SIngh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/7ORP3DO/search-youtube-metadata/issues"
+  },
+  "homepage": "https://github.com/7ORP3DO/search-youtube-metadata#readme",
+  "devDependencies": {
+    "prettier": "2.5.1"
+  },
+  "nodemonConfig": {
+    "ext": "js",
+    "delay": "2",
+    "ignore": [
+      "cookies.json",
+      "public/*"
+    ]
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "body-parser": "^1.20.0",
+    "compression": "^1.7.4",
+    "connect-timeout": "^1.9.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "express-rate-limit": "^6.3.0",
+    "moment": "^2.29.3",
+    "morgan": "^1.10.0",
+    "node-cache": "^5.1.2",
+    "serve-static": "^1.15.0"
+  }
+}

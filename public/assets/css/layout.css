@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dosis&display=swap");
 
 * {
   box-sizing: border-box;
@@ -12,8 +13,7 @@ html {
 }
 
 body {
-  min-height: 100vh;
-  background: #080808;
+  background: #1c1c1c;
   color: #fff;
   font-family: "Poppins", sans-serif;
   background-attachment: fixed;
@@ -22,10 +22,6 @@ body {
 .section {
   background-color: #151515;
   border-radius: 7px;
-  -webkit-border-radius: 0.7em;
-  -moz-border-radius: 7px;
-  -ms-border-radius: 7px;
-  -o-border-radius: 7px;
   padding: 1em;
   margin: 18px auto;
   width: 95%;
@@ -41,17 +37,18 @@ h2 {
   margin: 5px 0px 15px 0px;
 }
 
-.section p, .section li {
+.section p,
+.section li {
   margin: 10px 0px;
   font-family: "Exo 2", sans-serif;
   color: orange;
 }
 
-.section ul{
+.section ul {
   padding-left: 20px;
 }
 
-.section a{
+.section a {
   color: #ad55ff;
   text-decoration: none;
 }
@@ -98,49 +95,66 @@ h2 {
   -webkit-text-fill-color: transparent;
 }
 
-.home #inputUrl {
-  color: #cccccc;
-  background: #444;
+.form {
+  background-color: #333;
   width: 90%;
-  border-radius: 7px;
-  border: 2px #aaa solid;
-  height: 35px;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  margin-top: 90px;
+  margin: 22vh auto auto auto;
+  border-radius: 0.35em;
+  overflow: hidden;
+  border: 2px solid #333;
+  box-shadow: 1px 2px 3px rgb(0 0 0 / 76%);
+  max-width: 700px;
+}
+
+.form::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.form:invalid {
+  border-color: orangered;
+}
+.form:valid {
+  border-color: chartreuse;
+}
+
+.form input#input-url,
+.form .submit.btn {
+  height: 40px;
+  background: transparent;
+  font-size: 17px;
+  border: none;
+}
+
+.form input#input-url {
+  float: left;
+  width: 85%;
+  color: #eee;
+  padding-left: 12px;
+  font-family: "Poppins", sans-serif;
+}
+
+.form .submit.btn {
+  float: left;
+  width: 15%;
+  color: #aaa;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 00.35em;
+}
+
+input#input-url:focus {
   outline: none;
-  padding: 10px;
-  max-width: 450px;
-  box-shadow: 2px 2px 5px black;
 }
 
-#inputUrl:focus:invalid {
-  border-color: #f00;
+button:disabled .fa-search,
+button[disabled] .fa-search {
+  opacity: 0.4;
 }
 
-#inputUrl:focus:valid {
-  border-color: #0f0;
-}
-
-.home .submitBtn {
-  width: 90%;
-  height: 38px;
-  margin: auto;
-  display: block;
-  margin-top: 20px;
-  background-color: #0ff;
-  border: 3px #121212 solid;
-  border-radius: 9px;
-  font-weight: bold;
-  max-width: 450px;
-  font-size: 14px;
-  outline: none;
-  background: linear-gradient(40deg, #0ff, blueviolet);
-}
-
-.subtitle {
-  color: #b3b3b3;
+.tagline {
+  color: #ccc;
   font-size: 14px;
   font-family: "Exo 2", sans-serif;
   text-align: center;
@@ -177,13 +191,30 @@ h2 {
   font-style: normal;
 }
 
-.tags:hover{
+.tags:hover {
   background-color: #5c5c5c;
 }
 
 #result {
   padding: 5px;
   display: none;
+}
+
+#thumbnails > div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: space-around;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#thumbnails > div > img {
+  margin: 0.5em auto;
+  border: 2px solid #555;
+  border-radius: 0.4em;
+  box-shadow: #000 2px 2px 6px;
+  width: 122px;
 }
 
 footer p {
@@ -195,12 +226,85 @@ footer a {
   text-decoration: none;
 }
 
-.not-available h2{
+.not-available h2 {
   color: orangered;
   opacity: 0.7;
   text-decoration: line-through;
 }
 
-.not-available p{
+p.please_wait {
   display: none;
+  margin-top: 20vh;
+  color: #2df4a5;
+  animation: loading 0.6s infinite alternate;
+  text-align: center;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+#export > button {
+  background-color: #666;
+  color: #eee;
+  border-radius: 0.3em;
+  padding: 0.5em 1em;
+  border: none;
+  box-shadow: #000 2px 2px 4px;
+  background: linear-gradient(120deg, #666, #333);
+}
+
+.share p {
+  margin-top: 1em;
+}
+
+.share > div {
+  background-color: #333;
+  border-radius: 7px;
+  overflow: hidden;
+  max-width: 400px;
+}
+
+.share .share-url {
+  width: 84%;
+  display: inline;
+  background: transparent;
+  border: none;
+  padding: 5px 10px;
+  color: #bbb;
+}
+.share button {
+  width: 14%;
+  display: inline-block;
+  height: 35px;
+  background-color: blueviolet;
+  border: none;
+}
+
+.not-available p {
+  display: none;
+}
+.fa-spinner {
+  color: orange;
+}
+
+.swal2-popup {
+  font-family: "Dosis", sans-serif;
+  border: 2px solid #333;
+}
+
+.swal2-content {
+  text-align: justify;
+  margin-bottom: 15px;
+}
+
+.swal2-icon.swal2-warning {
+  border-color: orangered;
+  color: orangered;
+}
+
+@keyframes loading {
+  from {
+    color: #777;
+  }
+  to {
+    color: #ccc;
+  }
 }
