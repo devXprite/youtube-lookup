@@ -8,7 +8,7 @@ new ClipboardJS(".tags");
 
 const getYoutubeMetadata = (videoID) => {
   $.ajax({
-    url: `http://localhost:3000/api/video/${videoID}`,
+    url: `https://youtube-metadata.vercel.app/api/video/${videoID}`,
     method: "get",
     beforeSend: () => {
       $(".please_wait").show();
@@ -62,7 +62,7 @@ const checkForClipbordUrl = async () => {
   }
 };
 
-const submitUrl =(data) => {
+const submitUrl = (data) => {
   let inputValue = data || $("#input-url").val();
 
   try {
@@ -81,11 +81,11 @@ const submitUrl =(data) => {
   } catch (error) {
     console.log(error);
   }
-}
+};
 
 const showYoutubeMetaData = (data) => {
   $("#thumbnail").attr("src", data.snippet.thumbnails[0].url);
-  
+
   $("#thumbnails > div").html("");
   $("#topicDetails > ul").html("");
   $("#videoTags").html("");
@@ -165,8 +165,10 @@ const showYoutubeMetaData = (data) => {
     $("#topicDetails").addClass("not-available");
   }
 
-  $("#share-url").val(`${window.location.origin}${window.location.pathname}?id=${data.id}`);
-}
+  $("#share-url").val(
+    `${window.location.origin}${window.location.pathname}?id=${data.id}`
+  );
+};
 
 const handleAjaxError = async (jqXHR, textStatus, errorThrown) => {
   switch (jqXHR.status) {
@@ -199,14 +201,12 @@ const handleAjaxError = async (jqXHR, textStatus, errorThrown) => {
   }
 };
 
-
-
 $("#youtubeForm").submit(function (e) {
   e.preventDefault();
   submitUrl();
 });
 
-window.onload = () =>{
+window.onload = () => {
   try {
     let url = new URL(window.location.href);
     let urlSearch = new URL(url).search;
@@ -215,11 +215,8 @@ window.onload = () =>{
     if (UrlParam.has("id")) {
       getYoutubeMetadata(UrlParam.get("id"));
     }
-  } catch (error) {
-    
-  }
-  
-}
+  } catch (error) {}
+};
 
 setInterval(() => {
   checkForClipbordUrl();
