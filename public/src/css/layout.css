@@ -260,22 +260,30 @@ p.please_wait {
   border-radius: 7px;
   overflow: hidden;
   max-width: 400px;
+  height: 2.5em;
 }
 
 .share .share-url {
+  -webkit-user-select: all;
+  user-select: all;
   width: 84%;
-  display: inline;
+  display: inline-block;
   background: transparent;
   border: none;
-  padding: 5px 10px;
   color: #bbb;
+  margin: 0;
+  padding: 0 12px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .share button {
   width: 14%;
   display: inline-block;
-  height: 35px;
+  height: 100%;
   background-color: blueviolet;
   border: none;
+  border-radius: inherit;
 }
 
 .not-available p {

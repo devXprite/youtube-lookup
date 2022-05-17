@@ -1,0 +1,22 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es6": true,
+        "jquery": true
+    },
+    "extends": [
+        "airbnb-base"
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest"
+    },
+    "globals": {
+        "tippy": "writable",
+        "Waves": "writable",
+        "AOS": "writable",
+        "Swal": "writable",
+        "ClipboardJS": "writable"
+    },
+    "rules": {}
+}

@@ -1,89 +1,16 @@
-var youtubeMetaData, youtubeSearchData;
-
+/* eslint-disable no-plusplus */
+/* eslint-disable no-new */
 Waves.init();
 AOS.init();
-Waves.attach(".section, .tags", ["waves-block", "waves-float", "waves-light"]);
+// Waves.attach('.section, .tags', ['waves-block', 'waves-float', 'waves-light']);
 Waves.attach(".img.wrap");
-new ClipboardJS(".tags");
+new ClipboardJS(".tags,#export > div > div > button");
 
-const getYoutubeMetadata = (videoID) => {
-  $.ajax({
-    url: `https://youtube-metadata.vercel.app/api/video/${videoID}`,
-    method: "get",
-    beforeSend: () => {
-      $(".please_wait").show();
-      $(".fa-spinner").css("display", "block");
-      $(".result").hide();
-      $(".fa-search").hide();
-      $(".submit.btn").prop("disabled", true);
-      $("#input-url").prop("disabled", true);
-    },
-    success: (data) => {
-      showYoutubeMetaData(data);
-      window.location.href = "#result";
-    },
-    error: (jqXHR, textStatus, errorThrown) => {
-      handleAjaxError(jqXHR, textStatus, errorThrown);
-    },
-    complete: () => {
-      $(".submit.btn").prop("disabled", false);
-      $("#input-url").prop("disabled", false);
-      $(".fa-search").show();
-      $(".fa-spinner").hide();
-      $(".please_wait").hide();
-    },
-    dataType: "json",
-  });
+const log = (string) => {
+  console.log(string);
 };
 
-const checkForClipbordUrl = async () => {
-  let clipbaordPermission = await navigator.permissions.query({
-    name: "clipboard-read",
-    allowWithoutGesture: false,
-  });
-
-  console.log(clipbaordPermission.state);
-
-  if (clipbaordPermission.state == "granted") {
-    navigator.clipboard
-      .readText()
-      .then((text) => {
-        if (text.includes("youtu") && text != $("#input-url").val()) {
-          console.log("Automatic get URL from clipboard!");
-          $("#input-url").val(text);
-          submitUrl(text);
-        }
-      })
-      .catch((err) => {
-        console.error("Failed to read clipboard contents: ", err);
-      });
-  } else if (clipbaordPermission.state == "prompt") {
-    navigator.clipboard.readText();
-  }
-};
-
-const submitUrl = (data) => {
-  let inputValue = data || $("#input-url").val();
-
-  try {
-    let url = new URL(inputValue);
-    let urlSearch = new URL(url).search;
-    let UrlParam = new URLSearchParams(urlSearch);
-
-    if (UrlParam.has("v")) {
-      getYoutubeMetadata(UrlParam.get("v"));
-    } else if (inputValue.includes("youtu.be")) {
-      let urlPath = url.pathname.replace("/", "");
-      getYoutubeMetadata(urlPath);
-    } else {
-      console.log("URL dont't have any v parameter!");
-    }
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-const showYoutubeMetaData = (data) => {
+const showYoutubeMetaData = async (data) => {
   $("#thumbnail").attr("src", data.snippet.thumbnails[0].url);
 
   $("#thumbnails > div").html("");
@@ -97,15 +24,15 @@ const showYoutubeMetaData = (data) => {
   }
 
   $("#result").show();
-  console.log(data);
+  log(data);
 
   if (data.snippet) {
     $("#channelTitle").html(data.snippet.channelTitle);
     $("#channelDescription").html(data.snippet.description);
     $("#channelId").html(data.snippet.channelId);
 
-    $("#videoTitle").html(data.snippet.localized.title);
-    $("#videoDescription").html(data.snippet.localized.description);
+    $("#videoTitle").html(data.snippet.title);
+    $("#videoDescription").html(data.snippet.description);
     $("#videoPublishedAt").html(data.snippet.publishedAt);
 
     if (data.snippet.tags) {
@@ -165,12 +92,16 @@ const showYoutubeMetaData = (data) => {
     $("#topicDetails").addClass("not-available");
   }
 
-  $("#share-url").val(
+  $("#share-url").text(
+    `${window.location.origin}${window.location.pathname}?id=${data.id}`
+  );
+  $("#export > div > div > button").attr(
+    "data-clipboard-text",
     `${window.location.origin}${window.location.pathname}?id=${data.id}`
   );
 };
 
-const handleAjaxError = async (jqXHR, textStatus, errorThrown) => {
+const handleAjaxError = async (jqXHR) => {
   switch (jqXHR.status) {
     case 404:
       Swal.fire("Error 404", "Video Not Found", "warning");
@@ -201,23 +132,110 @@ const handleAjaxError = async (jqXHR, textStatus, errorThrown) => {
   }
 };
 
-$("#youtubeForm").submit(function (e) {
+const getYoutubeMetadata = async (videoID) => {
+  $.ajax({
+    url: `https://youtube-metadata.vercel.app/api/video/${videoID}`,
+    method: "get",
+    beforeSend: () => {
+      $(".please_wait").show();
+      $(".fa-spinner").css("display", "block");
+      $(".result").hide();
+      $(".fa-search").hide();
+      $(".submit.btn").prop("disabled", true);
+      $("#input-url").prop("disabled", true);
+    },
+    success: (data) => {
+      showYoutubeMetaData(data);
+      window.location.href = "#result";
+    },
+    error: (jqXHR, textStatus, errorThrown) => {
+      handleAjaxError(jqXHR, textStatus, errorThrown);
+    },
+    complete: () => {
+      $(".submit.btn").prop("disabled", false);
+      $("#input-url").prop("disabled", false);
+      $(".fa-search").show();
+      $(".fa-spinner").hide();
+      $(".please_wait").hide();
+    },
+    dataType: "json",
+  });
+};
+
+const submitUrl = async (data) => {
+  const url = data || $("#input-url").val();
+
+  try {
+    const regExp =
+      /^.*(youtu\.be\/|v\/|shorts\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+
+    var match = url.match(regExp);
+    if (match && match[2].length == 11) {
+      getYoutubeMetadata(match[2]);
+    } else {
+      log("Invalid URL!");
+    }
+
+    // if (UrlParam.has("v")) {
+    //   getYoutubeMetadata(UrlParam.get("v"));
+    // } else if (inputValue.includes("youtu.be")) {
+    //   const urlPath = url.pathname.replace("/", "");
+    //   getYoutubeMetadata(urlPath);
+    // } else {
+    //   log("URL dont't have any v parameter!");
+    // }
+  } catch (error) {
+    log(error);
+  }
+};
+
+const checkForClipbordUrl = async () => {
+  const clipbaordPermission = await navigator.permissions.query({
+    name: "clipboard-read",
+    allowWithoutGesture: false,
+  });
+
+  // log(clipbaordPermission.state);
+
+  if (clipbaordPermission.state === "granted") {
+    navigator.clipboard
+      .readText()
+      .then((text) => {
+        if (
+          text.includes("youtu") &&
+          text !== $("#input-url").val() &&
+          text.length <= 255
+        ) {
+          log("Automatic get URL from clipboard!");
+          $("#input-url").val(text);
+          submitUrl(text);
+        }
+      })
+      .catch((err) => {
+        console.error("Failed to read clipboard contents: ", err);
+      });
+  } else if (clipbaordPermission.state === "prompt") {
+    navigator.clipboard.readText();
+  }
+};
+
+$("#youtubeForm").submit((e) => {
   e.preventDefault();
   submitUrl();
 });
 
 window.onload = () => {
   try {
-    let url = new URL(window.location.href);
-    let urlSearch = new URL(url).search;
-    let UrlParam = new URLSearchParams(urlSearch);
+    const url = new URL(window.location.href);
+    const urlSearch = new URL(url).search;
+    const UrlParam = new URLSearchParams(urlSearch);
 
     if (UrlParam.has("id")) {
       getYoutubeMetadata(UrlParam.get("id"));
     }
-  } catch (error) {}
+  } catch (error) {
+    /* n/a  */
+  }
 };
 
-setInterval(() => {
-  checkForClipbordUrl();
-}, 5000);
+setInterval(checkForClipbordUrl, 5000);

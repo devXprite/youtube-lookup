@@ -6,8 +6,10 @@
   "scripts": {
     "test": "nodemon",
     "start": "node index.js",
-    "check": "prettier --check .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "check": "eslint . --ext .js",
+    "fix": "eslint . --ext .js --fix",
+    "lint": "eslint"
   },
   "repository": {
     "type": "git",
@@ -23,6 +25,9 @@
   },
   "homepage": "https://github.com/7ORP3DO/search-youtube-metadata#readme",
   "devDependencies": {
+    "eslint": "^8.15.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
     "prettier": "2.5.1"
   },
   "nodemonConfig": {
