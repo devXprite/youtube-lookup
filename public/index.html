@@ -1,162 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Youtube Lookup</title>
 
-  <title>Youtube MetaData</title>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./assets/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./assets/favicon-16x16.png"
+    />
+    <link rel="manifest" href="./site.webmanifest" />
 
-  <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
-  <link rel="manifest" href="./site.webmanifest">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
 
-  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400&display=swap"
-    rel="stylesheet" />
+    <link rel="stylesheet" href="./src/css/normalize.min.css" />
+    <link rel="stylesheet" href="./src/css/aos.min.css" />
+    <link rel="stylesheet" href="./src/css/sweetalert2.dark.min.css" />
+    <link rel="stylesheet" href="./src/css/waves.min.css" />
+    <link rel="stylesheet" href="./src/css/layout.css" />
 
-  <link rel="stylesheet" href="./src/css/normalize.min.css" />
-  <link rel="stylesheet" href="./src/css/aos.min.css" />
-  <link rel="stylesheet" href="./src/css/sweetalert2.dark.min.css" />
-  <link rel="stylesheet" href="./src/css/waves.min.css" />
-  <link rel="stylesheet" href="./src/css/layout.css" />
-  <link rel="stylesheet" media="screen and (min-width: 600px)" href="./src/css/wide.layout.css" />
+    <script src="https://kit.fontawesome.com/7b4d67b6f2.js"></script>
 
-  <script src="https://kit.fontawesome.com/7b4d67b6f2.js"></script>
-</head>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-RB2E0HXFY3"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-<body>
-  <header></header>
+      gtag("config", "G-RB2E0HXFY3");
+    </script>
+  </head>
 
-  <main>
-    <section class="home">
-      <h1 class="title">Youtube Metadata</h1>
-      <p class="tagline">
-        YouTube Metadata normal grabs singular details about a video and its
-        uploader, playlist and its creator, or channel.
-      </p>
+  <body>
+    <header></header>
 
-      <form class="form" id="youtubeForm">
-        <input type="url" name="input-url" id="input-url" class="input-url"
-          placeholder="eg. https://www.youtube.com/watch?v=33-CQdPHyjw" autocomplete="url" required />
-        <button type="submit" class="submit btn">
-          <i class="fa fa-search" aria-hidden="true"></i>
-          <i class="fas fa-spinner fa-pulse" style="display: none" aria-hidden="true"></i>
-        </button>
-      </form>
+    <main>
+      <section class="home">
+        <h1 class="title">Youtube Lookup</h1>
+        <p class="tagline">It grabs singular details about a video.</p>
 
-      <p class="please_wait">
-        Getting Video Data <br />
-        It may take up to 5 sec...
-      </p>
-    </section>
+        <form class="form" id="youtubeForm">
+          <input
+            type="url"
+            name="input-url"
+            id="input-url"
+            class="input-url"
+            placeholder="eg. https://www.youtube.com/watch?v=33-CQdPHyjw"
+            autocomplete="url"
+            required
+          />
+          <button type="submit" class="submit btn">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <i
+              class="fas fa-spinner fa-pulse"
+              style="display: none"
+              aria-hidden="true"
+            ></i>
+          </button>
+        </form>
 
-    <section id="result" class="result">
-      <div class="img wrap">
-        <img id="thumbnail" src="#" alt="" srcset="" />
-      </div>
-
-      <div id="snippet" class="section">
-        <h2>Snippet Details :</h2>
-
-        <p>Video Title: <span id="videoTitle">n/a</span></p>
-        <!-- <p>Video Description: <span id="videoDescription">n/a</span></p> -->
-        <p>Video Published At: <span id="videoPublishedAt">n/a</span></p>
-        <p>Channel Name: <span id="channelTitle">n/a</span></p>
-        <!-- <p>Channel Description: <span id="channelDescription">n/a</span></p> -->
-        <p>Channel ID: <span id="channelId">n/a</span></p>
-        <p id="videoTags">Video Tags:</p>
-      </div>
-
-      <div id="Statistics" class="section">
-        <h2>Statistics Details :</h2>
-
-        <p>Video viewCount: <span id="viewCount">n/a</span></p>
-        <p>Video likeCount: <span id="likeCount">n/a</span></p>
-        <p>Video favoriteCount: <span id="favoriteCount">n/a</span></p>
-        <p>Video commentCount: <span id="commentCount">n/a</span></p>
-      </div>
-
-      <div id="status" class="section">
-        <h2>Status Details :</h2>
-
-        <p>Video embeddable: <span id="embeddable">n/a</span></p>
-        <p>Video license: <span id="license">n/a</span></p>
-        <p>Video madeForKids: <span id="madeForKids">n/a</span></p>
-        <p>Video privacyStatus: <span id="privacyStatus">n/a</span></p>
-        <p>
-          Video publicStatsViewable: <span id="publicStatsViewable">n/a</span>
+        <p class="please_wait">
+          Getting Video Data <br />
+          It may take up to 5 sec...
         </p>
-        <p>Video uploadStatus: <span id="uploadStatus">n/a</span></p>
-      </div>
+      </section>
 
-      <div id="contentDetails" class="section">
-        <h2>Content Details :</h2>
+      <section id="result" class="result">
+        <div class="img wrap">
+          <img id="thumbnail" src="#" alt="" srcset="" />
+        </div>
 
-        <p>Video caption: <span id="caption">n/a</span></p>
-        <p>Video definition: <span id="definition">n/a</span></p>
-        <p>Video dimension: <span id="dimension">n/a</span></p>
-        <p>Video duration: <span id="duration">n/a</span></p>
-        <p>Video licensedContent: <span id="licensedContent">n/a</span></p>
-        <p>Video projection: <span id="projection">n/a</span></p>
-      </div>
+        <div id="snippet" class="section">
+          <h2>Snippet Details :</h2>
 
-      <div id="geolocationDetails" class="section">
-        <h2>Geolocation Details :</h2>
+          <p>Video Title: <span id="videoTitle">n/a</span></p>
+          <!-- <p>Video Description: <span id="videoDescription">n/a</span></p> -->
+          <p>Video Published At: <span id="videoPublishedAt">n/a</span></p>
+          <p>Channel Name: <span id="channelTitle">n/a</span></p>
+          <!-- <p>Channel Description: <span id="channelDescription">n/a</span></p> -->
+          <p>Channel ID: <span id="channelId">n/a</span></p>
+          <p id="videoTags">Video Tags:</p>
+        </div>
 
-        <p>latitude: <span id="latitude">n/a</span></p>
-        <p>longitude: <span id="longitude">n/a</span></p>
-        <p>altitude: <span id="altitude">n/a</span></p>
-        <p>Map Link: <span id="maplink">n/a</span></p>
-      </div>
+        <div id="Statistics" class="section">
+          <h2>Statistics Details :</h2>
 
-      <div id="thumbnails" class="section">
-        <h2>Thumbnails :</h2>
+          <p>Video viewCount: <span id="viewCount">n/a</span></p>
+          <p>Video likeCount: <span id="likeCount">n/a</span></p>
+          <p>Video favoriteCount: <span id="favoriteCount">n/a</span></p>
+          <p>Video commentCount: <span id="commentCount">n/a</span></p>
+        </div>
 
-        <div></div>
-      </div>
+        <div id="status" class="section">
+          <h2>Status Details :</h2>
 
-      <div id="topicDetails" class="section">
-        <h2>Topic Details :</h2>
+          <p>Video embeddable: <span id="embeddable">n/a</span></p>
+          <p>Video license: <span id="license">n/a</span></p>
+          <p>Video madeForKids: <span id="madeForKids">n/a</span></p>
+          <p>Video privacyStatus: <span id="privacyStatus">n/a</span></p>
+          <p>
+            Video publicStatsViewable: <span id="publicStatsViewable">n/a</span>
+          </p>
+          <p>Video uploadStatus: <span id="uploadStatus">n/a</span></p>
+        </div>
 
-        <ul>
-          <!-- <li><a href="#">n/a</a></li> -->
-        </ul>
-      </div>
+        <div id="contentDetails" class="section">
+          <h2>Content Details :</h2>
 
-      <div id="export" class="section">
-        <h2>Export & Share :</h2>
+          <p>Video caption: <span id="caption">n/a</span></p>
+          <p>Video definition: <span id="definition">n/a</span></p>
+          <p>Video dimension: <span id="dimension">n/a</span></p>
+          <p>Video duration: <span id="duration">n/a</span></p>
+          <p>Video licensedContent: <span id="licensedContent">n/a</span></p>
+          <p>Video projection: <span id="projection">n/a</span></p>
+        </div>
 
-        <button><i class="fa fa-download"></i> &nbsp; Export</button> <br />
+        <div id="geolocationDetails" class="section">
+          <h2>Geolocation Details :</h2>
 
-        <div class="share">
-          <p>Share this Result :</p>
-          <div>
-            <p class="share-url" id="share-url"></p>
-            <button class="btn"><i class="fa fa-copy"></i></button>
+          <p>latitude: <span id="latitude">n/a</span></p>
+          <p>longitude: <span id="longitude">n/a</span></p>
+          <p>altitude: <span id="altitude">n/a</span></p>
+          <p>Map Link: <span id="maplink">n/a</span></p>
+        </div>
+
+        <div id="thumbnails" class="section">
+          <h2>Thumbnails :</h2>
+
+          <div></div>
+        </div>
+
+        <div id="topicDetails" class="section">
+          <h2>Topic Details :</h2>
+
+          <ul>
+            <!-- <li><a href="#">n/a</a></li> -->
+          </ul>
+        </div>
+
+        <div id="export" class="section">
+          <h2>Export & Share :</h2>
+
+          <button onclick="window.saveAs(fileToSave, fileName);">
+            <i class="fa fa-download"></i> &nbsp; Export
+          </button>
+          <br />
+
+          <div class="share">
+            <p>Share this Result :</p>
+            <div>
+              <p class="share-url" id="share-url"></p>
+              <button class="btn"><i class="fa fa-copy"></i></button>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-    <br /><br />
-  </main>
+      </section>
+      <br /><br />
+    </main>
 
-  <script src="./src/javascript/jquery.min.js"></script>
-  <script src="./src/javascript/modernizr.min.js"></script>
-  <script src="./src/javascript/aos.min.js"></script>
-  <script src="./src/javascript/clipboard.min.js"></script>
-  <script src="./src/javascript/popper.min.js"></script>
-  <script src="./src/javascript/waves.min.js"></script>
-  <script src="./src/javascript/sweetalert2.min.js"></script>
-  <script src="./src/javascript/tippy-bundle.umd.min.js"></script>
-  <script src="./src/javascript/app.js"></script>
-</body>
-
+    <script src="./src/javascript/jquery.min.js"></script>
+    <script src="./src/javascript/modernizr.min.js"></script>
+    <script src="./src/javascript/aos.min.js"></script>
+    <script src="./src/javascript/clipboard.min.js"></script>
+    <script src="./src/javascript/popper.min.js"></script>
+    <script src="./src/javascript/waves.min.js"></script>
+    <script src="./src/javascript/sweetalert2.min.js"></script>
+    <script src="./src/javascript/FileSaver.min.js"></script>
+    <script src="./src/javascript/tippy-bundle.umd.min.js"></script>
+    <script src="./src/javascript/app.js"></script>
+  </body>
 </html>

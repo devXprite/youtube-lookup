@@ -27,6 +27,7 @@ body {
   width: 95%;
   max-width: 1000px;
   box-shadow: #000 4px 4px 6px, inset #585858 4px 4px 6px;
+  scroll-snap-align: start;
 }
 
 h2 {
@@ -198,6 +199,7 @@ button[disabled] .fa-search {
 #result {
   padding: 5px;
   display: none;
+  scroll-snap-type: y mandatory;
 }
 
 #thumbnails > div {
@@ -316,3 +318,11 @@ p.please_wait {
     color: #ccc;
   }
 }
+
+@media screen and (min-width: 600px) {
+  .home .title {
+    font-size: 3.5em;
+    margin-bottom: 0px;
+  }
+}
+

@@ -3,7 +3,8 @@
         "browser": true,
         "commonjs": true,
         "es6": true,
-        "jquery": true
+        "jquery": true,
+        "mocha": true
     },
     "extends": [
         "airbnb-base"
@@ -16,6 +17,7 @@
         "Waves": "writable",
         "AOS": "writable",
         "Swal": "writable",
+        "saveAs": "writable",
         "ClipboardJS": "writable"
     },
     "rules": {}
