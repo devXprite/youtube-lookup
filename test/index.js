@@ -1,11 +1,11 @@
-const { expect } = require('chai');
-const request = require('request');
+const { expect } = require("chai");
+const request = require("request");
 
 const testFunction = async (videoID, videoTitle, channelTitle) => {
   const url = `http://localhost:3000/api/video/${videoID}`;
 
-  it('Should returns status: 200', () => {
-    request(url, (error, response) => {
+  it("Should returns status: 200", () => {
+    request(url, (error, response, body) => {
       expect(response.statusCode).to.equal(200);
     });
   });
@@ -27,8 +27,14 @@ const testFunction = async (videoID, videoTitle, channelTitle) => {
   });
 };
 
-describe('Youtube Lookup', () => {
-  describe('Test jNQXAC9IVRw', testFunction('jNQXAC9IVRw', 'Me at the zoo', 'jawed'));
-  describe('Test LeAltgu_pbM', testFunction('LeAltgu_pbM', 'My Snowboarding Skillz', 'mw'));
-  describe('Test aBfUFr9SBY0', testFunction('aBfUFr9SBY0', 'tribute', 'gp'));
+describe("Youtube Lookup", () => {
+  describe(
+    "Test jNQXAC9IVRw",
+    testFunction("jNQXAC9IVRw", "Me at the zoo", "jawed"),
+  );
+  describe(
+    "Test LeAltgu_pbM",
+    testFunction("LeAltgu_pbM", "My Snowboarding Skillz", "mw"),
+  );
+  describe("Test aBfUFr9SBY0", testFunction("aBfUFr9SBY0", "tribute", "gp"));
 });

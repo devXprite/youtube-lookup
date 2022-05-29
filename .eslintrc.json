@@ -1,24 +1,25 @@
 {
-    "env": {
-        "browser": true,
-        "commonjs": true,
-        "es6": true,
-        "jquery": true,
-        "mocha": true
-    },
-    "extends": [
-        "airbnb-base"
-    ],
-    "parserOptions": {
-        "ecmaVersion": "latest"
-    },
-    "globals": {
-        "tippy": "writable",
-        "Waves": "writable",
-        "AOS": "writable",
-        "Swal": "writable",
-        "saveAs": "writable",
-        "ClipboardJS": "writable"
-    },
-    "rules": {}
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "jquery": true,
+    "mocha": true
+  },
+  "extends": ["airbnb-base"],
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
+  "globals": {
+    "tippy": "writable",
+    "Waves": "writable",
+    "AOS": "writable",
+    "Swal": "writable",
+    "saveAs": "writable",
+    "ClipboardJS": "writable",
+    "Notyf": "writable"
+  },
+  "rules": {
+    "quotes": ["error", "double"]
+  }
 }
