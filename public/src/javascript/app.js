@@ -160,7 +160,7 @@ const handleAjaxError = async (jqXHR) => {
 
 const getYoutubeMetadata = async (videoID) => {
   $.ajax({
-    url: `https://youtube-lookup.vercel.app/api/video/${videoID}`,
+    url: `./api/video/${videoID}`,
     method: "get",
     beforeSend: () => {
       $(".please_wait").show();

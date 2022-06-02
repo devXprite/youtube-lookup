@@ -1,10 +1,11 @@
 {
   "name": "youtube-lookup",
   "version": "1.0.0",
-  "description": "",
+  "description": "Simple Web Based Youtube Metadata Lookup",
   "main": "index.js",
   "scripts": {
     "test": "mocha --recursive --exit",
+    "dev": "nodemon",
     "start": "node index.js",
     "format": "prettier --write .",
     "check": "eslint . --ext .js",
@@ -35,7 +36,7 @@
     "ext": "js",
     "delay": "2",
     "ignore": [
-      "public/*"
+      "test/*"
     ]
   },
   "dependencies": {

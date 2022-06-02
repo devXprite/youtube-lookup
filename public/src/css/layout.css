@@ -27,7 +27,7 @@ body {
   margin: 18px auto;
   width: 95%;
   max-width: 1000px;
-  box-shadow: #000 4px 4px 6px, inset #585858 4px 4px 6px;
+  box-shadow: #000 4px 4px 6px, inset #585858 2px 2px 4px;
   scroll-snap-align: start;
 }
 
@@ -220,13 +220,10 @@ button[disabled] .fa-search {
   width: 122px;
 }
 
-footer p {
-  text-align: center;
-}
-
 footer a {
-  color: lime;
-  text-decoration: none;
+    text-decoration: none;
+    text-align: center;
+    color: #aaa;
 }
 
 .not-available h2 {
@@ -435,4 +432,13 @@ p.please_wait {
     opacity: 0;
     border-radius: 50%;
   }
+}
+
+footer{
+  padding: 0.6em;
+  background-color: #212121;
+  font-family: "Roboto", sans-serif;
+  box-shadow: -2px 0px 6px #000;
+  color: red;
+  text-align: center;
 }
