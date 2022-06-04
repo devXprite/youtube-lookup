@@ -4,9 +4,9 @@
   "description": "Simple Web Based Youtube Metadata Lookup",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "mocha --recursive --exit",
     "dev": "nodemon",
-    "start": "node index.js",
     "format": "prettier --write .",
     "check": "eslint . --ext .js",
     "fix": "eslint . --ext .js --fix",

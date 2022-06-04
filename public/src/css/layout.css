@@ -1,9 +1,17 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.12,
+* Autoprefixer: v10.4.4
+* Browsers: last 4 version
+*/
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Dosis&display=swap");
 
 * {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   margin: 0;
   padding: 0px;
 }
@@ -14,6 +22,7 @@ html {
 
 body {
   background: #1c1c1c;
+  background: -o-linear-gradient(228deg, #010101, #2d2d2d);
   background: linear-gradient(222deg, #010101, #2d2d2d);
   color: #fff;
   font-family: "Poppins", sans-serif;
@@ -27,7 +36,8 @@ body {
   margin: 18px auto;
   width: 95%;
   max-width: 1000px;
-  box-shadow: #000 4px 4px 6px, inset #585858 2px 2px 4px;
+  -webkit-box-shadow: #000 4px 4px 6px, inset #585858 2px 2px 4px;
+          box-shadow: #000 4px 4px 6px, inset #585858 2px 2px 4px;
   scroll-snap-align: start;
 }
 
@@ -81,8 +91,7 @@ h2 {
 }
 
 .home {
-  min-height: 100vh;
-  /* background: linear-gradient(334deg, black, blueviolet); */
+  min-height: 95vh;
 }
 
 .home .title {
@@ -92,6 +101,7 @@ h2 {
   padding: 20vh 1vh 1vh;
   font-weight: normal;
   margin: 0px;
+  background: -o-linear-gradient(336deg, #e633da 35%, #2bfa97 60%, #3acdff 100%);
   background: linear-gradient(114deg, #e633da 35%, #2bfa97 60%, #3acdff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -104,7 +114,8 @@ h2 {
   border-radius: 0.35em;
   overflow: hidden;
   border: 2px solid #333;
-  box-shadow: 1px 2px 3px rgb(0 0 0 / 76%);
+  -webkit-box-shadow: 1px 2px 3px rgb(0 0 0 / 76%);
+          box-shadow: 1px 2px 3px rgb(0 0 0 / 76%);
   max-width: 700px;
 }
 
@@ -170,7 +181,8 @@ button[disabled] .fa-search {
 #thumbnail {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 #videoDescription {
@@ -200,23 +212,35 @@ button[disabled] .fa-search {
 #result {
   padding: 5px;
   display: none;
-  scroll-snap-type: y mandatory;
+  -ms-scroll-snap-type: y mandatory;
+      scroll-snap-type: y mandatory;
 }
 
 #thumbnails > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-content: space-around;
-  align-items: center;
-  justify-content: space-around;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-line-pack: distribute;
+      align-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 #thumbnails > div > img {
   margin: 0.5em auto;
   border: 2px solid #555;
   border-radius: 0.4em;
-  box-shadow: #000 2px 2px 6px;
+  -webkit-box-shadow: #000 2px 2px 6px;
+          box-shadow: #000 2px 2px 6px;
   width: 122px;
 }
 
@@ -224,6 +248,13 @@ footer a {
     text-decoration: none;
     text-align: center;
     color: #aaa;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+footer a:hover{
+  color: chartreuse;
 }
 
 .not-available h2 {
@@ -236,7 +267,8 @@ p.please_wait {
   display: none;
   margin-top: 20vh;
   color: #2df4a5;
-  animation: loading 0.6s infinite alternate;
+  -webkit-animation: loading 0.6s infinite alternate;
+          animation: loading 0.6s infinite alternate;
   text-align: center;
   font-family: "Source Sans Pro", sans-serif;
 }
@@ -247,7 +279,9 @@ p.please_wait {
   border-radius: 0.3em;
   padding: 0.5em 1em;
   border: none;
-  box-shadow: #000 2px 2px 4px;
+  -webkit-box-shadow: #000 2px 2px 4px;
+          box-shadow: #000 2px 2px 4px;
+  background: -o-linear-gradient(330deg, #666, #333);
   background: linear-gradient(120deg, #666, #333);
 }
 
@@ -265,7 +299,8 @@ p.please_wait {
 
 .share .share-url {
   -webkit-user-select: all;
-  user-select: all;
+  -moz-user-select: all;
+       user-select: all;
   width: 84%;
   display: inline-block;
   background: transparent;
@@ -274,7 +309,8 @@ p.please_wait {
   margin: 0;
   padding: 0 12px;
   white-space: nowrap;
-  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
   overflow: hidden;
 }
 .share button {
@@ -306,6 +342,15 @@ p.please_wait {
 .swal2-icon.swal2-warning {
   border-color: orangered;
   color: orangered;
+}
+
+@-webkit-keyframes loading {
+  from {
+    color: #777;
+  }
+  to {
+    color: #ccc;
+  }
 }
 
 @keyframes loading {
@@ -341,7 +386,8 @@ p.please_wait {
   width: 20px;
   height: 20px;
   background: rgba(255, 255, 255, 0.2);
-  animation: animate 25s linear infinite;
+  -webkit-animation: animate 25s linear infinite;
+          animation: animate 25s linear infinite;
   bottom: -150px;
 }
 
@@ -349,86 +395,119 @@ p.please_wait {
   left: 25%;
   width: 80px;
   height: 80px;
-  animation-delay: 0s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
 }
 
 .circles li:nth-child(2) {
   left: 10%;
   width: 20px;
   height: 20px;
-  animation-delay: 2s;
-  animation-duration: 12s;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+  -webkit-animation-duration: 12s;
+          animation-duration: 12s;
 }
 
 .circles li:nth-child(3) {
   left: 70%;
   width: 20px;
   height: 20px;
-  animation-delay: 4s;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
 }
 
 .circles li:nth-child(4) {
   left: 40%;
   width: 60px;
   height: 60px;
-  animation-delay: 0s;
-  animation-duration: 18s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+  -webkit-animation-duration: 18s;
+          animation-duration: 18s;
 }
 
 .circles li:nth-child(5) {
   left: 65%;
   width: 20px;
   height: 20px;
-  animation-delay: 0s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
 }
 
 .circles li:nth-child(6) {
   left: 75%;
   width: 110px;
   height: 110px;
-  animation-delay: 3s;
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
 }
 
 .circles li:nth-child(7) {
   left: 35%;
   width: 150px;
   height: 150px;
-  animation-delay: 7s;
+  -webkit-animation-delay: 7s;
+          animation-delay: 7s;
 }
 
 .circles li:nth-child(8) {
   left: 50%;
   width: 25px;
   height: 25px;
-  animation-delay: 15s;
-  animation-duration: 45s;
+  -webkit-animation-delay: 15s;
+          animation-delay: 15s;
+  -webkit-animation-duration: 45s;
+          animation-duration: 45s;
 }
 
 .circles li:nth-child(9) {
   left: 20%;
   width: 15px;
   height: 15px;
-  animation-delay: 2s;
-  animation-duration: 35s;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+  -webkit-animation-duration: 35s;
+          animation-duration: 35s;
 }
 
 .circles li:nth-child(10) {
   left: 85%;
   width: 150px;
   height: 150px;
-  animation-delay: 0s;
-  animation-duration: 11s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+  -webkit-animation-duration: 11s;
+          animation-duration: 11s;
 }
 
-@keyframes animate {
+@-webkit-keyframes animate {
   0% {
-    transform: translateY(0) rotate(0deg);
+    -webkit-transform: translateY(0) rotate(0deg);
+            transform: translateY(0) rotate(0deg);
     opacity: 1;
     border-radius: 0;
   }
 
   100% {
-    transform: translateY(-1000px) rotate(720deg);
+    -webkit-transform: translateY(-1000px) rotate(720deg);
+            transform: translateY(-1000px) rotate(720deg);
+    opacity: 0;
+    border-radius: 50%;
+  }
+}
+
+@keyframes animate {
+  0% {
+    -webkit-transform: translateY(0) rotate(0deg);
+            transform: translateY(0) rotate(0deg);
+    opacity: 1;
+    border-radius: 0;
+  }
+
+  100% {
+    -webkit-transform: translateY(-1000px) rotate(720deg);
+            transform: translateY(-1000px) rotate(720deg);
     opacity: 0;
     border-radius: 50%;
   }
@@ -438,7 +517,8 @@ footer{
   padding: 0.6em;
   background-color: #212121;
   font-family: "Roboto", sans-serif;
-  box-shadow: -2px 0px 6px #000;
+  -webkit-box-shadow: -2px 0px 6px #000;
+          box-shadow: -2px 0px 6px #000;
   color: red;
   text-align: center;
 }
