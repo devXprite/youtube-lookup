@@ -8,17 +8,16 @@ Waves.attach(".section, .tags", ["waves-block", "waves-float", "waves-light"]);
 Waves.attach(".img.wrap");
 const clipboard = new ClipboardJS(".tags,#export > div > div > button");
 const notyf = new Notyf({
-  types: [
-    {
-      type: "success",
-      background: "#343434",
-      duration: 1500,
-    },
-    {
-      type: "error",
-      dismissible: true,
-      duration: 2500,
-    },
+  types: [{
+    type: "success",
+    background: "#343434",
+    duration: 1500,
+  },
+  {
+    type: "error",
+    dismissible: true,
+    duration: 2500,
+  },
   ],
 });
 
@@ -102,7 +101,10 @@ const showYoutubeMetaData = async (data) => {
     $("#contentDetails").addClass("not-available");
   }
 
-  if (data.recordingDetails.location) {
+  if (Object.keys(data.recordingDetails).length > 0) {
+    if (data.recordingDetails.locationDescription) {
+      $("#location").html(data.recordingDetails.locationDescription);
+    }
     $("#altitude").html(data.recordingDetails.location.altitude);
     $("#latitude").html(data.recordingDetails.location.latitude);
     $("#longitude").html(data.recordingDetails.location.longitude);
@@ -189,8 +191,9 @@ const getYoutubeMetadata = async (videoID) => {
 };
 
 const submitUrl = async (data) => {
-  const url = data || $("#input-url").val();
+  $("#tyyit").hide();
 
+  const url = data || $("#input-url").val();
   try {
     const regExp = /^.*(youtu\.be\/|v\/|shorts\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
 
@@ -221,8 +224,8 @@ const checkForClipbordUrl = async () => {
       .readText()
       .then((text) => {
         if (text.match(regExp) && text !== $("#input-url").val()) {
+          $("#tyyit").hide();
           notyf.success("Sucessfully get URL from clipboard!");
-
           $("#input-url").val(text);
           submitUrl(text);
         }
@@ -233,6 +236,19 @@ const checkForClipbordUrl = async () => {
   } else if (clipbaordPermission.state === "prompt") {
     navigator.clipboard.readText();
   }
+};
+
+const tryIt = () => {
+  $("#input-url").val("");
+  const typed = new Typed("#input-url", {
+    strings: ["https://youtu.be/J0Ozc2GFgZU"],
+    typeSpeed: 80,
+    loop: false,
+    onComplete: () => {
+      $(".submit.btn").click();
+      $("#tyyit").hide();
+    },
+  });
 };
 
 clipboard.on("success", (e) => {
@@ -260,10 +276,11 @@ window.onload = () => {
 
     if (UrlParam.has("id")) {
       getYoutubeMetadata(UrlParam.get("id"));
+      $("#tyyit").hide();
     }
   } catch (error) {
     /* n/a  */
   }
 };
 
-setInterval(checkForClipbordUrl, 5000);
+setInterval(checkForClipbordUrl, 10000);
