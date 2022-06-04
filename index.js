@@ -140,7 +140,7 @@ const notFound = async (req, res) => {
 app.use(cors());
 app.use(compression());
 app.use(bodyParser.json());
-app.use("/api/*", limiter, morgan("tiny"));
+app.use("/api/*", limiter, morgan("combined"));
 app.get("/api/video/:videoID", checkForFormat, verifyCache, video);
 app.use(
   serveStatic(path.join(__dirname, "public"), {

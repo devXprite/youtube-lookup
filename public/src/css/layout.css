@@ -389,13 +389,13 @@ p.please_wait {
 
 .tryit {
   width: 93%;
-  max-width: 700px;
+  max-width: 680px;
   text-align: right;
   display: block;
   color: deepskyblue;
   font-size: 14px;
   text-decoration: none;
-  margin-top: 1vh;
+  margin: 1vh auto auto auto;
 }
 
 .tryit:active {
