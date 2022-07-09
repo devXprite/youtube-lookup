@@ -6,11 +6,11 @@
   "scripts": {
     "start": "node index.js",
     "test": "mocha --recursive --exit",
-    "dev": "nodemon",
+    "dev": "nodemon -e js,json,css",
     "format": "prettier --write .",
     "check": "eslint . --ext .js",
-    "fix": "eslint . --ext .js --fix",
-    "lint": "eslint"
+    "lint": "semistandard --fix \"**/*.js\"",
+    "link:fix": "eslint . --ext .js --fix"
   },
   "repository": {
     "type": "git",

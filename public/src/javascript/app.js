@@ -241,7 +241,7 @@ const checkForClipbordUrl = async () => {
 const tryIt = () => {
   $("#input-url").val("");
   const typed = new Typed("#input-url", {
-    strings: ["https://youtu.be/J0Ozc2GFgZU"],
+    strings: ["https://youtu.be/jNQXAC9IVRw"],
     typeSpeed: 80,
     loop: false,
     onComplete: () => {
