@@ -14,17 +14,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/7ORP3DO/youtube-lookup.git"
+    "url": "git+https://github.com/devXprite/youtube-lookup.git"
   },
   "keywords": [
     "youtube"
   ],
-  "author": "Prateek SIngh",
+  "author": {
+    "name": "DevXprite",
+    "email": "devXprite@gmail.com"
+  },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/7ORP3DO/youtube-lookup/issues"
+    "url": "https://github.com/devXprite/youtube-lookup/issues"
   },
-  "homepage": "https://github.com/7ORP3DO/youtube-lookup#readme",
+  "homepage": "https://github.com/devXprite/youtube-lookup#readme",
   "devDependencies": {
     "eslint": "^8.15.0",
     "eslint-config-airbnb-base": "^15.0.0",
