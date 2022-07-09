@@ -4,7 +4,6 @@
 </div>
 
 ## Getting Started
-
 To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
@@ -59,7 +58,7 @@ This is an example of how to list things you need to use the software and how to
 ## Run with Gitpod
 Click this button to run your project on Gitpod which comes with pre-configured environment you need.
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#[<your-project-url>](https://github.com/devXprite/youtube-lookup))
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/devXprite/youtube-lookup)
 
 <!-- Deploy  -->
 ## Deploy
